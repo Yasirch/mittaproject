@@ -38,7 +38,7 @@ class RestaurantController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $logoPath = $logo->store('public/logos');
-            $restaurant->logo = Storage::url($logoPath);
+            $restaurant->logo = $logoPath;
         }
 
         // Save the changes to the restaurant
@@ -114,7 +114,7 @@ class RestaurantController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $logoPath = $logo->store('public/logos');
-            $restaurant->logo = Storage::url($logoPath);
+            $restaurant->logo = $logoPath;
         }
 
         // Save the restaurant to the database
