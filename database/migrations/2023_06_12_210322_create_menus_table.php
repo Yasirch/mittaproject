@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('weekday');
             $table->string('foodtitle');
             $table->text('fooddesc');
-            $table->json('foodadditives')->nullable();
-            $table->json('allergens')->nullable();
-            $table->decimal('price', 8, 2);
+            $table->text('foodadditives')->nullable();
+            $table->text('allergens')->nullable();
+            $table->decimal('price');
             $table->timestamps();
         });
     }
