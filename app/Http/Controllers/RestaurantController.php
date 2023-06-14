@@ -36,9 +36,9 @@ class RestaurantController extends Controller
 
         // Handle logo update if provided
         if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            $logoPath = $logo->store('public/logos');
-            $restaurant->logo = $logoPath;
+            $logoPath = $request->file('logo')->store('logos', 'public');
+
+            $restaurant->logo= $logoPath;
         }
 
         // Save the changes to the restaurant
@@ -112,8 +112,8 @@ class RestaurantController extends Controller
 
         // Handle logo upload if provided
         if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-            $logoPath = $logo->store('public/logos');
+            $logoPath = $request->file('logo')->store('logos', 'public');
+
             $restaurant->logo = $logoPath;
         }
 
