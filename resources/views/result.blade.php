@@ -37,7 +37,7 @@
                 <th scope="col">Donnerstag</th>
                 <th scope="col">Freitag</th>
                 <th scope="col">Samstag</th>
-                <th scope="col"></th>
+                <th scope="col">Sonntag</th>
             </tr>
 
             @if ($restaurants->count() > 0)
