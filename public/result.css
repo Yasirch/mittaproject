@@ -59,6 +59,7 @@ body {
     align-items: center;
 }
 
+
 .input-width {
     min-width: 250px;
 }
@@ -282,6 +283,10 @@ li.selected {
    ============================*/
 
 @media(max-width: 768px) {
+
+    .center-align{
+        display: block;
+    }
     #calendar .weekdays,
     #calendar .other-month {
         display: none;
