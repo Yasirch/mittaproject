@@ -513,3 +513,13 @@ li.selected {
     top: 15px;
     right: 20px;
 }
+@media (max-width: 768px) {
+    .link-login{
+        color: #fff !important;
+        text-decoration: none;
+        background-color: transparent;
+        position: absolute;
+        top: 55px;
+        right: 10px;
+    }
+}
