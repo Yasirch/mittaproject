@@ -898,6 +898,7 @@ li.selected {
         border-radius: 5px 5px 0 0px;
         grid-template-columns: repeat(8, 1fr);
         width: max-content;
+        padding: 0 4px 0 4px;
     }
     #calendar tr{
 
