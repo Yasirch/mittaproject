@@ -6,7 +6,7 @@
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="card p-3 py-4">
                     <div class="text-center">
-                        <img src="{{ asset('storage/' . $restaurant->logo) }}" alt="Restaurant Logo" width="300">
+{{--                        <img src="{{ asset('storage/' . $restaurant->logo) }}" alt="Restaurant Logo" width="300">--}}
 
                     </div>
 

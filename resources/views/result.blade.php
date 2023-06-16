@@ -45,7 +45,7 @@
                     <tr class="day">
                         <td class="data-name">
                             {{ $restaurant->name }}
-                            <img class="logo-css" src="{{ $restaurant->logo ? $restaurant->logo : '/storage/logos/default.jpg' }}" alt="Restaurant 1">
+{{--                            <img class="logo-css" src="{{ $restaurant->logo ? $restaurant->logo : '/storage/logos/default.jpg' }}" alt="Restaurant 1">--}}
                             <a class="" target="_blank" href="{{ $restaurant->website_link }}">Webseite</a>
                         </td>
                         @foreach ($weekdays as $weekday)
