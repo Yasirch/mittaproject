@@ -38,6 +38,8 @@ class UserController extends Controller
         $searchCity = $request->input('inputcity');
         $city = explode(' ', $searchCity)[0];
 
+        $searchedcity = explode(' ', $searchCity)[0];
+
         // Query the restaurants table to retrieve the restaurants in the specified city
         $restaurants = Restaurant::where('city', 'like', "%$city%")->get();
         foreach ($restaurants as $restaurant) {
@@ -87,7 +89,7 @@ class UserController extends Controller
         $weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', ''];
 
 
-        return view('result', ['restaurants' => $restaurants,'city'=>$city,'citiesWithPostalCodes'=>$citiesWithPostalCodes, 'weekdays'=>$weekdays]);
+        return view('result', ['restaurants' => $restaurants,'searchedcity'=>$searchedcity,'citiesWithPostalCodes'=>$citiesWithPostalCodes, 'weekdays'=>$weekdays]);
     }
 
 

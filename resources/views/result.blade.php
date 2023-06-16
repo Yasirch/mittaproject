@@ -2,7 +2,7 @@
 
 <div class="row width-city">
     <div class="col-lg-6">
-        <div class="city">{{$city}}</div>
+        <div class="city">{{$searchedcity}}</div>
     </div>
     <div class="col-lg-6">
         <form action="{{ route('restaurants.result') }}" method="post" novalidate="novalidate">
