@@ -11,21 +11,21 @@
                     <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
                     @enderror
                     <div class="form-group">
-                        <label class="mb-2" for="foodtitle">Food Title:</label>
+                        <label class="mb-2" for="foodtitle">Gericht:</label>
                         <input type="text" id="foodtitle" name="foodtitle" value="{{ $menu->foodtitle }}">
                         @error('foodtitle')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="fooddesc">Food Description:</label>
+                        <label for="fooddesc">Beschreibung:</label>
                         <textarea id="fooddesc" name="fooddesc">{{ $menu->fooddesc }}</textarea>
                         @error('fooddesc')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="price"><strong>Price:</strong></label>
+                        <label for="price"><strong>Preis:</strong></label>
                         <input type="number" class="custom-input" id="price" name="price" value="{{ $menu->price }}">
                         @error('price')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
@@ -33,7 +33,7 @@
                     </div>
                     <!-- Food Additives -->
                     <div class="form-group">
-                        <label class="mb-2">Food Additives:</label>
+                        <label class="mb-2">Zusatzstoffe:</label>
                         <div class="row m-0">
                             @foreach ($foodAdditives as $key => $additive)
                                 <div class="col-lg-4 col-md-6 col-sm-12 p-lg-0">

@@ -4,7 +4,7 @@
         <h2>
             {{$username}}
             <form class="ml-2 d-inline" action="#" method="POST">
-                <a href="/restaurant"><div class="btn btn-primary btn-sm">Add Restaurant &nbsp; <i class="fa fa-light fa-plus"></i></div></a>
+                <a href="/restaurant"><div class="btn btn-primary btn-sm">Restaraunt Hinzufügen &nbsp; <i class="fa fa-light fa-plus"></i></div></a>
                 <!-- <button class="btn btn-danger btn-sm">Stop Following <i class="fas fa-user-times"></i></button> -->
             </form>
         </h2>

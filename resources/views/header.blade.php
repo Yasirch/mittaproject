@@ -7,7 +7,7 @@
             <a href="#" class="mr-2"><img title="My Profile" data-toggle="tooltip" data-placement="bottom" style="width: 32px; height: 32px; border-radius: 16px" src="https://gravatar.com/avatar/f64fc44c03a8a7eb1d52502950879659?s=128" /></a>
             <a class="btn btn-sm btn-success mr-2" href="#">Create Post</a>
             <form action="#" method="POST" class="d-inline">
-                <button class="btn btn-sm btn-secondary">Sign Out</button>
+                <button class="btn btn-sm btn-secondary">Anmelden</button>
             </form>
         </div>
     </div>

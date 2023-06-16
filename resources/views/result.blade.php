@@ -26,59 +26,65 @@
     </div>
 
 </div>
+    <div class="table-responsive">
+        <table id="calendar">
 
-<table id="calendar">
-
-    <tr class="weekdays">
-        <th scope="col">Restaurant</th>
-        <th scope="col">Monday</th>
-        <th scope="col">Tuesday</th>
-        <th scope="col">Wednesday</th>
-        <th scope="col">Thursday</th>
-        <th scope="col">Friday</th>
-        <th scope="col">Saturday</th>
-        <th scope="col">Sunday</th>
-    </tr>
-
-    @if ($restaurants->count() > 0)
-        @foreach ($restaurants as $restaurant)
-            <tr class="day">
-                <td class="data-name">
-                    {{ $restaurant->name }}
-                    <img class="logo-css" src="{{ $restaurant->logo ? $restaurant->logo : '/storage/logos/default.jpg' }}" alt="Restaurant 1">
-                    <a class="" target="_blank" href="{{ $restaurant->website_link }}">Approach homepage</a>
-                </td>
-                @foreach ($weekdays as $weekday)
-                    <td>
-                        <div>
-                            <p>{{ $restaurant->menu[$weekday]['food_description'] ?? '' }}</p>
-                            <p>{{ $restaurant->menu[$weekday]['food_title'] ?? '' }}</p>
-
-                            @if (!empty($restaurant->menu[$weekday]['food_additives']))
-                                <div>
-                                    <strong>Food Additives:</strong>
-                                </div>
-                                <p>{{ $restaurant->menu[$weekday]['food_additives'] }}</p>
-                            @endif
-                            @if (!empty($restaurant->menu[$weekday]['allergens']))
-                                <div>
-                                    <strong>Food Allergens:</strong>
-                                </div>
-                                <p>{{ strtoupper($restaurant->menu[$weekday]['allergens'] ?? '') }}</p>
-                            @endif
-
-
-                        </div>
-                    </td>
-                @endforeach
-
-                <!-- Repeat the above structure for other weekdays -->
+            <tr class="weekdays">
+                <th scope="col">Restaurant</th>
+                <th scope="col">Montag</th>
+                <th scope="col">Dienstag</th>
+                <th scope="col">Mittwoch</th>
+                <th scope="col">Donnerstag</th>
+                <th scope="col">Freitag</th>
+                <th scope="col">Samstag</th>
+                <th scope="col"></th>
             </tr>
-        @endforeach
-    @else
-        <p>No restaurants found in the specified city.</p>
-    @endif
-</table>
+
+            @if ($restaurants->count() > 0)
+                @foreach ($restaurants as $restaurant)
+                    <tr class="day">
+                        <td class="data-name">
+                            {{ $restaurant->name }}
+                            <img class="logo-css" src="{{ $restaurant->logo ? $restaurant->logo : '/storage/logos/default.jpg' }}" alt="Restaurant 1">
+                            <a class="" target="_blank" href="{{ $restaurant->website_link }}">Webseite</a>
+                        </td>
+                        @foreach ($weekdays as $weekday)
+                            <td>
+                                <div>
+                                    <p>{{ $restaurant->menu[$weekday]['food_description'] ?? '' }}</p>
+                                    <p>{{ $restaurant->menu[$weekday]['food_title'] ?? '' }}</p>
+                                    @if(!empty($restaurant->menu[$weekday]['price']))
+                                        <p><strong>Preis: </strong>{{ $restaurant->menu[$weekday]['price'] }} <stong>€</stong></p>
+                                    @endif
+
+
+                                @if (!empty($restaurant->menu[$weekday]['food_additives']))
+                                        <div>
+                                            <strong>Zusatzstoffe:</strong>
+                                        </div>
+                                        <p>{{ $restaurant->menu[$weekday]['food_additives'] }}</p>
+                                    @endif
+                                    @if (!empty($restaurant->menu[$weekday]['allergens']))
+                                        <div>
+                                            <strong>Allergene:</strong>
+                                        </div>
+                                        <p>{{ strtoupper($restaurant->menu[$weekday]['allergens'] ?? '') }}</p>
+                                    @endif
+
+
+                                </div>
+                            </td>
+                        @endforeach
+
+                        <!-- Repeat the above structure for other weekdays -->
+                    </tr>
+                @endforeach
+            @else
+                <p>No restaurants found in the specified city.</p>
+            @endif
+        </table>
+    </div>
+
 </x-header>
     <script type="text/javascript">
         const wrapper = document.querySelector(".wrapper"),

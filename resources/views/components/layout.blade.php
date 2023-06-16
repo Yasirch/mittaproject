@@ -15,21 +15,21 @@
 <body>
 <header class="header-bar mb-3">
     <div class="container d-flex flex-column flex-md-row align-items-center p-3">
-        <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">MittaGitsch</a></h4>
+        <h4 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-white">Mitagstisch</a></h4>
         @auth
             <div class="flex-row my-3 my-md-0">
 
                 <div class="d-md-inline-block d-block">
-                    <a href="/login" class="btn btn-sm btn-primary margin-mobile">My All Restaurant</a>
+                    <a href="/login" class="btn btn-sm btn-primary margin-mobile">Meine Restaraunts</a>
                 </div>
 
                 <div class="d-md-inline-block d-block">
-                    <a class="btn btn-sm btn-primary margin-mobile" href="/restaurant">Add Restaurant</a>
+                    <a class="btn btn-sm btn-primary margin-mobile" href="/restaurant">Restaraunt Hinzufügen</a>
                 </div>
 
                 <form action="/logout" method="POST" class="d-md-inline-block mb-2 d-block">
                     @csrf
-                    <button class="btn btn-sm btn-primary">Sign Out</button>
+                    <button class="btn btn-sm btn-primary">Anmelden</button>
                 </form>
             </div>
 
@@ -42,10 +42,10 @@
                     <input name="loginemail" class="form-control form-control-sm input-dark" type="text" placeholder="Email" autocomplete="off" />
                 </div>
                 <div class="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-                    <input name="loginpassword" class="form-control form-control-sm input-dark" type="password" placeholder="Password" />
+                    <input name="loginpassword" class="form-control form-control-sm input-dark" type="password" placeholder="Passwort" />
                 </div>
                 <div class="col-md-auto">
-                    <button class="btn btn-primary btn-sm">Sign In</button>
+                    <button class="btn btn-primary btn-sm">Anmelden</button>
                 </div>
             </div>
         </form>

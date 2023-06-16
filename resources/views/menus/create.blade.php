@@ -17,7 +17,7 @@
                     <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
 
                     <div class="form-group">
-                        <label class="mb-2" for="foodtitle">Food Title:</label>
+                        <label class="mb-2" for="foodtitle">Gericht:</label>
                         <input type="text" id="foodtitle" name="foodtitle" value="{{ old('foodtitle') }}">
                         @error('foodtitle')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
@@ -26,7 +26,7 @@
 
 
                     <div class="form-group">
-                        <label for="fooddesc">Food Description:</label>
+                        <label for="fooddesc">Beschreibung:</label>
                         <textarea id="fooddesc" name="fooddesc">{{ old('fooddesc') }}</textarea>
                         @error('fooddesc')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
@@ -35,7 +35,7 @@
 
 
                     <div class="form-group">
-                        <label  for="price"><strong>Price:</strong></label>
+                        <label  for="price"><strong>Preis:</strong></label>
                         <input type="number" class="custom-input" id="price" name="price" value="{{ old('price') }}">
                         @error('price')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
@@ -44,7 +44,7 @@
 
                     <!-- Food Additives -->
                     <div class="form-group">
-                        <label class="mb-2">Food Additives:</label>
+                        <label class="mb-2">Zusatzstoffe:</label>
                         <div class="row m-0">
                             @for ($i = 0; $i < count($foodAdditives); $i++)
                             <div class="col-lg-4 col-md-6 col-sm-12 p-lg-0">
@@ -76,7 +76,7 @@
 
                     <!-- Add more form fields for food_title, food_description, price, food_additives, food_allergens -->
 
-                    <button type="submit" class="btn btn-primary mb-4">Create Menu</button>
+                    <button type="submit" class="btn btn-primary mb-4">Erstelle Menü</button>
                 </form>
             </div>
         </div>
