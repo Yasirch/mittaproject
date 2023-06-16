@@ -881,9 +881,10 @@ li.selected {
 @media(max-width: 768px) {
 
     .center-align{
-        display: block;
-        margin: auto;
-        max-width: 310px;
+        margin-left: 24px;
+    }
+    .input-width{
+        min-width: 210px;
     }
 
 
