@@ -169,9 +169,6 @@ class UserController extends Controller
         return redirect('/login')->with('success', 'Thank you for creating an account.');
     }
 
-    public function addToHome()
-    {
-        return view('add-to-home');
-    }
+
 
 }
