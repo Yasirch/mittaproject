@@ -18,6 +18,7 @@ use App\Http\Controllers\MenuController;
 
 
 Route::get('/', [UserController::class, "homepage"]);
+Route::get('/add-to-home', UserController::class, 'addToHome')->name('addToHome');
 Route::post('/loginuser', [UserController::class, "loginuser"]);
 Route::post('/register', [UserController::class, "register"])->middleware('guest');
 Route::get('/login', [UserController::class, "showCorrectHomepage"])->name('login');

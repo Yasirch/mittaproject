@@ -86,6 +86,7 @@
                         </div>
                         <h5 class="mt-2 mb-0">{{$restaurant->city}} {{$restaurant->postal_code}}</h5>
                         <a href="{{$restaurant->website_link ?? ''}}" target="_blank">Webseiten Link</a>
+                        <a href="{{$restaurant->gmap ?? ''}}" target="_blank">G-map Link</a>
 
                     </div>
 

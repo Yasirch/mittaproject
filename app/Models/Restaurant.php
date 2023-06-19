@@ -12,6 +12,7 @@ class Restaurant extends Model
         'name',
         'user_id',
         'city',
+        'gmap',
         'postal_code',
         'website_link',
         'logo',

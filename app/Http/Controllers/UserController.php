@@ -34,14 +34,40 @@ class UserController extends Controller
 
     public function result(Request $request)
     {
+        $allRestaurants = Restaurant::query();
+        $searchInput = $request->input('inputcity');
 
-        $searchCity = $request->input('inputcity');
-        $city = explode(' ', $searchCity)[0];
 
-        $searchedcity = explode(' ', $searchCity)[0];
+        if (preg_match('/^([A-Za-z]+)\s+(\d+)$/', $searchInput, $matches)) {
+            // Input is a mixture of alphabet and numbers (city + space + postal code)
+            $city = $matches[1];
+            $postalCode = $matches[2];
+            // Search by partial city and postal code
+            if ($city !== '' && $postalCode !== '') {
+                $allRestaurants->where('city', 'like', "%$city%")
+                    ->where('postal_code', 'like', "%$postalCode%");
+            }
+        } elseif (preg_match('/^[A-Za-z]+$/', $searchInput)) {
+            // Input is alphabet only (partial match for city)
+            $allRestaurants->where('city', 'like', "%$searchInput%");
+        } elseif (preg_match('/^\d+$/', $searchInput)) {
+            // Input is numerical only (partial match for postal code)
+            $allRestaurants->where('postal_code', 'like', "%$searchInput%");
+        } else{
+            $allRestaurants = null;
+        }
+        $restaurants = $allRestaurants ? $allRestaurants->get() : collect();
 
-        // Query the restaurants table to retrieve the restaurants in the specified city
-        $restaurants = Restaurant::where('city', 'like', "%$city%")->get();
+        $firstRestaurant = $restaurants->first();
+
+        if ($firstRestaurant) {
+            $searchedcity = $firstRestaurant->city;
+            // Use the $city variable as needed
+        } else {
+            $searchedcity= 'not Found';
+        }
+
+
         foreach ($restaurants as $restaurant) {
             $menuData = [];
             $weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag','Samstag',''];
@@ -142,4 +168,10 @@ class UserController extends Controller
         auth()->login($user);
         return redirect('/login')->with('success', 'Thank you for creating an account.');
     }
+
+    public function addToHome()
+    {
+        return view('add-to-home');
+    }
+
 }

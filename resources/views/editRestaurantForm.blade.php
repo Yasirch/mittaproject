@@ -34,8 +34,16 @@
 
 
                     <div class="form-group">
-                        <label for="website_link">Website:</label>
+                        <label for="website_link">Webseiten:</label>
                         <input type="text" id="website" name="website_link" value="{{  old('website_link', $restaurant->website_link) }}">
+                        @error('website_link')
+                        <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website_link">G-map Link:</label>
+                        <input type="text" id="website" name="gmap" value="{{  old('gmap', $restaurant->gmap) }}">
                         @error('website_link')
                         <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
                         @enderror

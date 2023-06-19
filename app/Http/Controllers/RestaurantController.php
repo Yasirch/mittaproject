@@ -25,6 +25,7 @@ class RestaurantController extends Controller
             'city' => 'required|string|max:255',
             'postal_code' => 'required|integer',
             'website_link' => 'nullable|url',
+            'gmap' => 'nullable|url',
             'logo' => 'nullable|file|mimes:jpeg,jpg,png|max:2048',
         ]);
 
@@ -33,6 +34,7 @@ class RestaurantController extends Controller
         $restaurant->city = $validatedData['city'];
         $restaurant->postal_code = $validatedData['postal_code'];
         $restaurant->website_link = $validatedData['website_link'];
+        $restaurant->gmap = $validatedData['gmap'];
 
         // Handle logo update if provided
         if ($request->hasFile('logo')) {
@@ -95,6 +97,7 @@ class RestaurantController extends Controller
             'city' => 'required|string|max:255',
             'postal_code' => 'required|integer',
             'website_link' => 'nullable|url',
+            'gmap' => 'nullable|url',
             'logo' => 'nullable|file|mimes:jpeg,jpg,png|max:2048',
         ]);
 
@@ -106,6 +109,7 @@ class RestaurantController extends Controller
         $restaurant->city = $request->input('city');
         $restaurant->postal_code = $request->input('postal_code');
         $restaurant->website_link = $request->input('website_link');
+        $restaurant->gmap = $request->input('gmap');
 
         // Save the authenticated user's ID as the user_id for the restaurant
         $restaurant->user_id = Auth::id();

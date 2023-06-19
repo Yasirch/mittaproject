@@ -46,7 +46,13 @@
                         <td class="data-name">
                             {{ $restaurant->name }}
 {{--                            <img class="logo-css" src="{{ $restaurant->logo ? $restaurant->logo : '/storage/logos/default.jpg' }}" alt="Restaurant 1">--}}
-                            <a class="" target="_blank" href="{{ $restaurant->website_link }}">Webseite</a>
+                            @if($restaurant->website_link)
+                                <a class="" target="_blank" href="{{ $restaurant->website_link }}">Webseite</a>
+                            @endif
+                            @if($restaurant->gmap)
+                                <a class="" target="_blank" href="{{ $restaurant->gmap }}">Gmap Link</a>
+                            @endif
+
                         </td>
                         @foreach ($weekdays as $weekday)
                             <td>
@@ -80,7 +86,7 @@
                     </tr>
                 @endforeach
             @else
-                <p>No restaurants found in the specified city.</p>
+                <p class="text-center px-3">No restaurants found in the specified city.</p>
             @endif
         </table>
     </div>
