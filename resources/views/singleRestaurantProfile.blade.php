@@ -118,16 +118,16 @@
                                             <a class="nav-link" data-toggle="tab" href="#tuesday" role="tab" aria-controls="tuesday" aria-selected="false">Dienstag</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday" aria-selected="false">Wednesday</a>
+                                            <a class="nav-link" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday" aria-selected="false">Mittwoch</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#thursday" role="tab" aria-controls="thursday" aria-selected="false">Freitag</a>
+                                            <a class="nav-link" data-toggle="tab" href="#thursday" role="tab" aria-controls="thursday" aria-selected="false">Donnerstag</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#friday" role="tab" aria-controls="friday" aria-selected="false">Friday</a>
+                                            <a class="nav-link" data-toggle="tab" href="#friday" role="tab" aria-controls="friday" aria-selected="false">Freitag</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#saturday" role="tab" aria-controls="saturday" aria-selected="false">Saturday</a>
+                                            <a class="nav-link" data-toggle="tab" href="#saturday" role="tab" aria-controls="saturday" aria-selected="false">Samstag</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">Sunday</a>
@@ -142,10 +142,10 @@
                                             <a class="nav-link" data-toggle="tab" href="#tuesday" role="tab" aria-controls="tuesday" aria-selected="false">Dienstag</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday" aria-selected="false">Freitag</a>
+                                            <a class="nav-link" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday" aria-selected="false">Mittwoch</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#thursday" role="tab" aria-controls="thursday" aria-selected="false">Freitag</a>
+                                            <a class="nav-link" data-toggle="tab" href="#thursday" role="tab" aria-controls="thursday" aria-selected="false">Donnerstag</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#friday" role="tab" aria-controls="friday" aria-selected="false">Freitag</a>
@@ -246,7 +246,6 @@
                                                                 {{ $additive }},
                                                             @endforeach
                                                         </p>
-                                                        <p><strong>Allergene:</strong>
                                                         <p><strong>Allergene:</strong>
                                                             @foreach ($menu->allergens as $allergen)
                                                                 {{ ucwords($allergen) }},
