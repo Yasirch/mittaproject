@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price"><strong>Preis:</strong></label>
-                        <input type="number" class="custom-input" id="price" name="price" value="{{ $menu->price }}">
+                        <input type="number"  step="0.01" class="custom-input" id="price" name="price" value="{{ $menu->price }}">
                         @error('price')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
                         @enderror

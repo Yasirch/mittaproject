@@ -679,7 +679,7 @@ body {
     grid-column: 1 / -1;
     display: grid;
     border-radius: 5px 5px 0 0px;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     width: 100%;
 }
 
@@ -902,7 +902,7 @@ li.selected {
         grid-column: 1 / -1;
         display: grid;
         border-radius: 5px 5px 0 0px;
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         width: max-content;
         padding: 0 4px 0 4px;
     }

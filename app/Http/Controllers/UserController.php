@@ -70,7 +70,7 @@ class UserController extends Controller
 
         foreach ($restaurants as $restaurant) {
             $menuData = [];
-            $weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag','Samstag',''];
+            $weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
 
             foreach ($weekdays as $weekday) {
                 $menu = $restaurant->menus()->where('weekday', $weekday)->first();
@@ -112,7 +112,7 @@ class UserController extends Controller
                 $citiesWithPostalCodes[] = $cityWithPostalCode;
             }
         }
-        $weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', ''];
+        $weekdays = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
 
 
         return view('result', ['restaurants' => $restaurants,'searchedcity'=>$searchedcity,'citiesWithPostalCodes'=>$citiesWithPostalCodes, 'weekdays'=>$weekdays]);

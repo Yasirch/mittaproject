@@ -36,8 +36,6 @@
                 <th scope="col">Mittwoch</th>
                 <th scope="col">Donnerstag</th>
                 <th scope="col">Freitag</th>
-                <th scope="col">Samstag</th>
-                <th scope="col">Sonntag</th>
             </tr>
 
             @if ($restaurants->count() > 0)
@@ -57,8 +55,8 @@
                         @foreach ($weekdays as $weekday)
                             <td>
                                 <div>
-                                    <p>{{ $restaurant->menu[$weekday]['food_description'] ?? '' }}</p>
                                     <p>{{ $restaurant->menu[$weekday]['food_title'] ?? '' }}</p>
+                                    <p>{{ $restaurant->menu[$weekday]['food_description'] ?? '' }}</p>
                                     @if(!empty($restaurant->menu[$weekday]['price']))
                                         <p><strong>Preis: </strong>{{ $restaurant->menu[$weekday]['price'] }} <stong>€</stong></p>
                                     @endif

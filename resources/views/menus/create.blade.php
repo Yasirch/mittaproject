@@ -36,7 +36,7 @@
 
                     <div class="form-group">
                         <label  for="price"><strong>Preis:</strong></label>
-                        <input type="number" class="custom-input" id="price" name="price" value="{{ old('price') }}">
+                        <input type="number" class="custom-input"  step="0.01" id="price" name="price" value="{{ old('price') }}">
                         @error('price')
                         <p class="m-0 small alert alert-danger shadow-sm">{{ $message }}</p>
                         @enderror

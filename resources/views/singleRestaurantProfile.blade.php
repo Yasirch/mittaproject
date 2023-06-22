@@ -36,7 +36,7 @@
                        </div>
                        <div class="flex-center mobile-card-desktop">
                            @php
-                               $weekdays = ['Donnerstag', 'Freitag', 'Samstag'];
+                               $weekdays = ['Donnerstag', 'Freitag'];
 
                                foreach ($weekdays as $weekday) {
                                    $menuForDay = $restaurant->menus()->where('weekday', $weekday)->first();
@@ -50,22 +50,11 @@
                                }
                            @endphp
                        </div>
-                       <div class="flex-center mobile-card-desktop">
-                           @php
-                               $menuForSunday = $restaurant->menus()->where('weekday', 'Sonntag')->first();
-                               $menuExistsForSunday = !is_null($menuForSunday);
-                           @endphp
 
-                           @if ($menuExistsForSunday)
-                               <a class="btn btn-sm btn-red mb-2 mr-2" href="{{ route('menus.edit', ['restaurant' => $restaurant->id, 'menu' => $menuForSunday->id]) }}">Sonntag Menu</a>
-                           @else
-                               <a class="btn btn-sm btn-red mb-2 mr-2" href="{{ route('menus.create', ['restaurant' => $restaurant->id, 'weekday' => 'Sonntag']) }}"> Sonntag Menu</a>
-                           @endif
-                       </div>
 
                         <div class="flex-center mobile-card-mobile">
                             @php
-                                $weekdays = ['Montag', 'Dienstag', 'Mittwoch','Donnerstag', 'Freitag', 'Samstag','Sonntag'];
+                                $weekdays = ['Montag', 'Dienstag', 'Mittwoch','Donnerstag', 'Freitag'];
 
                                 foreach ($weekdays as $weekday) {
                                     $menuForDay = $restaurant->menus()->where('weekday', $weekday)->first();
@@ -126,12 +115,12 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#friday" role="tab" aria-controls="friday" aria-selected="false">Freitag</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#saturday" role="tab" aria-controls="saturday" aria-selected="false">Samstag</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">Sunday</a>
-                                        </li>
+{{--                                        <li class="nav-item">--}}
+{{--                                            <a class="nav-link" data-toggle="tab" href="#saturday" role="tab" aria-controls="saturday" aria-selected="false">Samstag</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="nav-item">--}}
+{{--                                            <a class="nav-link" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">Sunday</a>--}}
+{{--                                        </li>--}}
                                     </ul>
 
                                     <ul class="nav nav-tabs link-color  d-none d-md-flex  nav-justified " role="tablist">
@@ -150,12 +139,12 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#friday" role="tab" aria-controls="friday" aria-selected="false">Freitag</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#saturday" role="tab" aria-controls="saturday" aria-selected="false">Samstag</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">Sonntag</a>
-                                        </li>
+{{--                                        <li class="nav-item">--}}
+{{--                                            <a class="nav-link" data-toggle="tab" href="#saturday" role="tab" aria-controls="saturday" aria-selected="false">Samstag</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li class="nav-item">--}}
+{{--                                            <a class="nav-link" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday" aria-selected="false">Sonntag</a>--}}
+{{--                                        </li>--}}
                                     </ul>
 
                                     <div class="tab-content mt-3">
@@ -178,7 +167,7 @@
                                                             @endforeach
                                                         </p>
                                                     </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
+                                                    <div class="container py-md-2 mb-3  text-center container--narrow">
                                                         <div class="medium">
                                                             Edit or Delete the {{$menu->weekday}} Menü Here:
                                                         </div>
@@ -215,7 +204,7 @@
                                                             @endforeach
                                                         </p>
                                                     </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
+                                                    <div class="container py-md-2 mb-3  text-center container--narrow">
                                                         <div class="medium">
                                                             Edit or Delete the {{$menu->weekday}} Menü Here:
                                                         </div>
@@ -252,7 +241,7 @@
                                                             @endforeach
                                                         </p>
                                                     </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
+                                                    <div class="container py-md-2 mb-3  text-center container--narrow">
                                                         <div class="medium">
                                                             Edit or Delete the {{$menu->weekday}} Menu Here:
                                                         </div>
@@ -290,7 +279,7 @@
                                                             @endforeach
                                                         </p>
                                                     </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
+                                                    <div class="container py-md-2 mb-3  text-center container--narrow">
                                                         <div class="medium">
                                                             Edit or Delete the {{$menu->weekday}} Menu Here:
                                                         </div>
@@ -328,85 +317,11 @@
                                                             @endforeach
                                                         </p>
                                                     </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
+                                                    <div class="container py-md-2 mb-3 text-center container--narrow">
                                                         <div class="medium">
                                                             Edit or Delete the {{$menu->weekday}} Menu Here:
                                                         </div>
                                                         <span class="pt-2">
-                                                              <a href="{{ route('menus.edit', ['restaurant' => $restaurant->id, 'menu' => $menu->id]) }}" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                              <form class="delete-post-form d-inline" action="{{ route('menus.destroy', ['restaurant' => $restaurant->id, 'weekday' => $menu->weekday]) }}" method="POST">
-                                                                  @csrf
-                                                                  @method('DELETE')
-                                                                <button class="delete-post-button text-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
-                                                              </form>
-                                                            </span>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <p class="py-5">Daten noch nicht Hinzugefügt.</p>
-                                            @endif
-                                        </div>
-                                        <div class="tab-pane pt-3" id="saturday" role="tabpanel" aria-labelledby="saturday-tab">
-                                            <h3>Samstag Menu</h3>
-                                            @if ($menus->where('weekday', 'Samstag')->count() > 0)
-                                                @foreach ($menus->where('weekday', 'Samstag') as $menu)
-                                                    <div class="menu-item">
-                                                        <p><strong>Gericht:</strong>: {{ $menu->foodtitle }}</p>
-                                                        <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
-                                                        <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
-                                                            @foreach ($menu->foodadditives as $additive)
-                                                                {{ $additive }},
-                                                            @endforeach
-                                                        </p>
-                                                        <p><strong>Allergene:</strong>
-                                                            @foreach ($menu->allergens as $allergen)
-                                                                {{ ucwords($allergen) }},
-                                                            @endforeach
-                                                        </p>
-                                                    </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
-                                                        <div class="medium">
-                                                            Edit or Delete {{$menu->weekday}} Menu Here:
-                                                        </div>
-                                                        <span class="pt-2">
-                                                              <a href="{{ route('menus.edit', ['restaurant' => $restaurant->id, 'menu' => $menu->id]) }}" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                                              <form class="delete-post-form d-inline" action="{{ route('menus.destroy', ['restaurant' => $restaurant->id, 'weekday' => $menu->weekday]) }}" method="POST">
-                                                                  @csrf
-                                                                  @method('DELETE')
-                                                                <button class="delete-post-button text-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></button>
-                                                              </form>
-                                                            </span>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                <p class="py-5">Daten noch nicht Hinzugefügt.</p>
-                                            @endif
-                                        </div>
-                                        <div class="tab-pane pt-3" id="sunday" role="tabpanel" aria-labelledby="sunday-tab">
-                                            <h3>Sonntag Menu</h3>
-                                            @if ($menus->where('weekday', 'Sonntag')->count() > 0)
-                                                @foreach ($menus->where('weekday', 'Sonntag') as $menu)
-                                                    <div class="menu-item">
-                                                        <p><strong>Gericht:</strong> {{ $menu->foodtitle }}</p>
-                                                        <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
-                                                        <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
-                                                            @foreach ($menu->foodadditives as $additive)
-                                                                {{ $additive }},
-                                                            @endforeach
-                                                        </p>
-                                                        <p><strong>Allergene:</strong>
-                                                            @foreach ($menu->allergens as $allergen)
-                                                                {{ ucwords($allergen) }},
-                                                            @endforeach
-                                                        </p>
-                                                    </div>
-                                                    <div class="container py-md-2 text-center container--narrow">
-                                                        <div class="medium">
-                                                            Edit or Delete the {{$menu->weekday}} Menu Here:
-                                                        </div>
-                                                        <span class="pt-2 mb-2">
                                                               <a href="{{ route('menus.edit', ['restaurant' => $restaurant->id, 'menu' => $menu->id]) }}" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
                                                               <form class="delete-post-form d-inline" action="{{ route('menus.destroy', ['restaurant' => $restaurant->id, 'weekday' => $menu->weekday]) }}" method="POST">
                                                                   @csrf
