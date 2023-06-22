@@ -5,7 +5,7 @@
         <div class="city">{{$searchedcity}}</div>
     </div>
     <div class="col-lg-6">
-        <form action="{{ route('restaurants.result') }}" method="post" novalidate="novalidate">
+        <form action="/result" method="post" novalidate="novalidate">
             @csrf
             <div class="row">
                 <div class="col-lg-12 wrapper">
