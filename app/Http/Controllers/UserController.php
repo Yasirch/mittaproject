@@ -27,6 +27,10 @@ class UserController extends Controller
         return view('user.create');
     }
 
+    public function admin(){
+        return view('user.admin');
+    }
+
 
     public function store(Request $request)
     {
@@ -42,6 +46,26 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
+        return redirect()->route('login')->with('success', 'User successfully added .');
+
+    }
+
+    public function adminStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = new User([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'is_admin' => $request->has('is_admin'), // Use the has method to check if the checkbox is checked
+        ]);
+
+        $user->save();
         return redirect()->route('login')->with('success', 'User successfully added .');
 
     }

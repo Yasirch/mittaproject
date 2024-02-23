@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form method="POST" action="{{ route('user.store') }}" method="POST">
+                <form method="POST" action="{{ route('admin.store') }}" method="POST">
                     @csrf
 
                     <div class="form-group">
@@ -35,8 +35,13 @@
                         <input type="password" id="password_confirmation"  class="form-control" name="password_confirmation">
                     </div>
 
+                    <div class="form-group">
+                        <label for="is_admin">Is Admin:</label>
+                        <input type="checkbox" id="is_admin" name="is_admin" {{ old('is_admin', $user->is_admin ?? false) ? 'checked' : '' }}>
+                    </div>
 
-                    <button type="submit" name="submit" class="btn btn-primary mr-2 margin-b-20">Neuen Admin anlegen</button>
+
+                    <button type="submit" name="submit" class="btn btn-primary mr-2 margin-b-20">Neuen Benutzer erstellen</button>
                     <a href="/login"><button class="btn btn-primary margin-b-20">Abbrechen</button></a>
                 </form>
             </div>

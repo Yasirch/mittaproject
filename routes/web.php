@@ -22,6 +22,10 @@ Route::get('/', [UserController::class, "homepage"]);
 Route::post('/loginuser', [UserController::class, "loginuser"]);
 Route::post('/register', [UserController::class, "register"])->middleware('guest');
 Route::get('/login', [UserController::class, "showCorrectHomepage"])->name('login');
+Route::get('/admin', [UserController::class, "admin"])->name('user.admin');
+Route::post('/admin/store', [UserController::class, 'adminStore'])->name('admin.store');
+
+
 Route::post('/logout', [UserController::class, "logout"])->middleware('auth');
 Route::post('/result', [UserController::class, 'result'])->name('restaurants.result')->middleware('web');
 
