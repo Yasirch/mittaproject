@@ -11,9 +11,9 @@
                 <div class="col-lg-12 wrapper">
                     <div class="content center-align">
                         <div class="search search-panel p-0">
-                            <input type="text" name="inputcity" onfocusin="displayOption()" id="optioninput" autocomplete="off" class="input-border input-width form-control search-slt" placeholder="Your City or Zip Code...">
+                            <input type="text" name="inputcity" onfocusin="displayOption()" id="optioninput" autocomplete="off" class="input-border input-width form-control search-slt" placeholder="Ihre Stadt oder Postleitzahl...">
                             <div class="button-search p-0">
-                                <button type="submit" class="button-color wrn-btn btn">Search</button>
+                                <button type="submit" class="button-color wrn-btn btn">Suche</button>
                             </div>
                             <ul class="options" onfocusout="hideOption()" id="optiondisplay">
                             </ul>
@@ -84,7 +84,7 @@
                     </tr>
                 @endforeach
             @else
-                <p class="text-center px-3">No restaurants found in the specified city.</p>
+                <p class="text-center px-3">Keine Restaurants in der angegebenen Stadt gefunden</p>
             @endif
         </table>
     </div>

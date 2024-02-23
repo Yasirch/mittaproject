@@ -943,7 +943,12 @@ li.selected {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
+.padding-r-2{
+    padding-right: 10px;
+}
+.height-full{
+    height: 75vh;
+}
 .row {
     margin: 0px !important;
 }

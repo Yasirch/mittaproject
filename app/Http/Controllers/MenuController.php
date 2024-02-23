@@ -7,6 +7,8 @@ use App\Models\Restaurant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class MenuController extends Controller
@@ -25,34 +27,34 @@ class MenuController extends Controller
 
         $foodValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13];
         $foodAdditives = [
-            'Dye',
-            'Preservative',
-            'Antioxidant',
-            'Flavor enhancer',
-            'Sulfured',
-            'Blackened',
-            'with Phosphate',
-            'with Milk protein (for meat products)',
-            'Caffeinated',
-            'Contains quinine',
-            'With sweetener',
-            'Waxed'
+            'Farbstoff',
+            'Konservierungsstoff',
+            'Antioxidans',
+            'Geschmacksverstärker',
+            'geschwefelt',
+            'geschwärzt',
+            'mit Phosphat',
+            'mit Milchprotein (für Fleischprodukte)',
+            'koffeinhaltig',
+            'Enthält Chinin',
+            'Mit Süßungsmittel',
+            'gewachst',
         ];
         $allergens = [
-            'a' => 'Cereals containing gluten',
-            'b' => 'Crustaceans and products thereof',
-            'c' => 'Eggs and products thereof',
-            'd' => 'Fish and products thereof',
-            'e' => 'Peanuts and products thereof',
-            'f' => 'Soya (beans) and products derived therefrom',
-            'g' => 'Milk and products thereof',
-            'h' => 'Nuts',
-            'i' => 'Celery and products thereof',
-            'j' => 'Mustard and products thereof',
-            'k' => 'Sesame seeds and products thereof',
-            'l' => 'Sulfur dioxide and sulphites',
-            'm' => 'Lupins and products thereof',
-            'n' => 'Molluscs and products thereof',
+            'a' => 'Getreide, das Gluten enthält',
+            'b' => 'Krebstiere und daraus gewonnene Erzeugnisse',
+            'c' => 'Eier und daraus gewonnene Erzeugnisse',
+            'd' => 'Fisch und daraus gewonnene Erzeugnisse',
+            'e' => 'Erdnüsse und daraus gewonnene Erzeugnisse',
+            'f' => 'Soja (Bohnen) und daraus gewonnene Erzeugnisse',
+            'g' => 'Milch und daraus gewonnene Erzeugnisse',
+            'h' => 'Schalenfrüchte',
+            'i' => 'Sellerie und daraus gewonnene Erzeugnisse',
+            'j' => 'Senf und daraus gewonnene Erzeugnisse',
+            'k' => 'Sesamsamen und daraus gewonnene Erzeugnisse',
+            'l' => 'Schwefeldioxid und Sulfite',
+            'm' => 'Lupinen und daraus gewonnene Erzeugnisse',
+            'n' => 'Weichtiere und daraus gewonnene Erzeugnisse',
         ];
 
         // Retrieve the restaurant instance based on the provided ID
@@ -91,9 +93,20 @@ class MenuController extends Controller
         $menu->allergens = $request->input('allergens', []);
         $menu->restaurant()->associate($restaurant);
         $menu->save();
+        $user = $menu->restaurant->user;
 
-        return redirect()->route('restaurant.show', ['restaurant' => $restaurant])->with('success', 'Menu created successfully');
+        // Check if the authenticated user is an admin
+        if (auth()->check() && auth()->user()->isAdmin()) {
 
+            // Redirect to the admin route
+            return redirect()->route('user.restaurants.show', [
+                'user' => $user,
+                'restaurant' => $restaurant,
+            ])->with('success', 'Menu created successfully.');
+        } else {
+            // Redirect to the regular user route
+            return redirect()->route('restaurant.show', $restaurant)->with('success', 'Menu created successfully.');
+        }
     }
 
 
@@ -118,34 +131,34 @@ class MenuController extends Controller
     {
         $foodValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13];
         $foodAdditives = [
-            'Dye',
-            'Preservative',
-            'Antioxidant',
-            'Flavor enhancer',
-            'Sulfured',
-            'Blackened',
-            'with Phosphate',
-            'with Milk protein (for meat products)',
-            'Caffeinated',
-            'Contains quinine',
-            'With sweetener',
-            'Waxed'
+            'Farbstoff',
+            'Konservierungsstoff',
+            'Antioxidans',
+            'Geschmacksverstärker',
+            'geschwefelt',
+            'geschwärzt',
+            'mit Phosphat',
+            'mit Milchprotein (für Fleischprodukte)',
+            'koffeinhaltig',
+            'Enthält Chinin',
+            'Mit Süßungsmittel',
+            'gewachst',
         ];
         $allergens = [
-            'a' => 'Cereals containing gluten',
-            'b' => 'Crustaceans and products thereof',
-            'c' => 'Eggs and products thereof',
-            'd' => 'Fish and products thereof',
-            'e' => 'Peanuts and products thereof',
-            'f' => 'Soya (beans) and products derived therefrom',
-            'g' => 'Milk and products thereof',
-            'h' => 'Nuts',
-            'i' => 'Celery and products thereof',
-            'j' => 'Mustard and products thereof',
-            'k' => 'Sesame seeds and products thereof',
-            'l' => 'Sulfur dioxide and sulphites',
-            'm' => 'Lupins and products thereof',
-            'n' => 'Molluscs and products thereof',
+            'a' => 'Getreide, das Gluten enthält',
+            'b' => 'Krebstiere und daraus gewonnene Erzeugnisse',
+            'c' => 'Eier und daraus gewonnene Erzeugnisse',
+            'd' => 'Fisch und daraus gewonnene Erzeugnisse',
+            'e' => 'Erdnüsse und daraus gewonnene Erzeugnisse',
+            'f' => 'Soja (Bohnen) und daraus gewonnene Erzeugnisse',
+            'g' => 'Milch und daraus gewonnene Erzeugnisse',
+            'h' => 'Schalenfrüchte',
+            'i' => 'Sellerie und daraus gewonnene Erzeugnisse',
+            'j' => 'Senf und daraus gewonnene Erzeugnisse',
+            'k' => 'Sesamsamen und daraus gewonnene Erzeugnisse',
+            'l' => 'Schwefeldioxid und Sulfite',
+            'm' => 'Lupinen und daraus gewonnene Erzeugnisse',
+            'n' => 'Weichtiere und daraus gewonnene Erzeugnisse',
         ];
 
         // Retrieve the restaurant and menu instances based on the provided IDs
@@ -192,8 +205,20 @@ class MenuController extends Controller
         $menu->allergens = $validatedData['allergens'] ?? [];
         $menu->save();
 
-        return redirect()->route('restaurant.show', $restaurant)
-            ->with('success', 'Menu updated successfully.');
+        $user = $menu->restaurant->user;
+
+        // Check if the authenticated user is an admin
+        if (auth()->check() && auth()->user()->isAdmin()) {
+
+            // Redirect to the admin route
+            return redirect()->route('user.restaurants.show', [
+                'user' => $user,
+                'restaurant' => $restaurant,
+            ])->with('success', 'Menu updated successfully.');
+        } else {
+            // Redirect to the regular user route
+            return redirect()->route('restaurant.show', $restaurant)->with('success', 'Menu updated successfully.');
+        }
     }
 
 
@@ -212,7 +237,19 @@ class MenuController extends Controller
         // Delete the menu
         $menu->delete();
 
-        // Redirect the user to the restaurant show page or any other desired page
-        return redirect()->route('restaurant.show', $restaurant)->with('success', 'Menu deleted successfully');
+        $user = $menu->restaurant->user;
+
+        // Check if the authenticated user is an admin
+        if (auth()->check() && auth()->user()->isAdmin()) {
+
+            // Redirect to the admin route
+            return redirect()->route('user.restaurants.show', [
+                'user' => $user,
+                'restaurant' => $restaurant,
+            ])->with('success', 'Menu deleted successfully.');
+        } else {
+            // Redirect to the regular user route
+            return redirect()->route('restaurant.show', $restaurant)->with('success', 'Menu deleted successfully.');
+        }
     }
 }

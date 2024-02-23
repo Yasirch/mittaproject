@@ -10,7 +10,7 @@
         </h2>
 
         <div class="profile-nav nav nav-tabs pt-2 mb-4">
-            <div class="profile-nav-link nav-item full-border nav-link active">Restaurants Added: {{$count}}</div>
+            <div class="profile-nav-link nav-item full-border nav-link active">Restaurants Hinzugefügt: {{$count}}</div>
 
         </div>
 

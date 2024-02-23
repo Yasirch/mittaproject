@@ -284,7 +284,7 @@
             let isSelected = data == searchInp.value ? "selected" : "";
             return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
         }).join("");
-        options.innerHTML = arr ? arr : `<p style="padding-left: 15px; margin-top: 10px;">Oops! City not found</p>`
+        options.innerHTML = arr ? arr : `<p style="padding-left: 15px; margin-top: 10px;">Oops! Stadt nicht Gefunden.</p>`
     });
 
 

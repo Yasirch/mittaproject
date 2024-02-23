@@ -1,11 +1,11 @@
 <x-layout>
-    <div class="container py-md-5">
+    <div class="container height-full py-md-5">
         <div class="row align-items-center">
             <div class="col-lg-7 py-3 py-md-5">
                 <h1 class="display-3">Mittagstisch</h1>
-                <p class="lead text-muted"> Die Liste für unsere Lokalen Restaraunt, Enjoy it!</p>
+                <p class="lead text-muted"> Die Liste für unsere Lokalen Restaraunt, Genieße es!</p>
             </div>
-            <div class="col-lg-5 pl-lg-5 pb-3 py-lg-5">
+            {{--<div class="col-lg-5 pl-lg-5 pb-3 py-lg-5">
                 <form action="/register" method="POST" id="registration-form">
                     @csrf
                     <div class="form-group">
@@ -42,7 +42,7 @@
 
                     <button type="submit" class="py-3 mt-4 btn btn-lg btn-success btn-block">Jetzt Registrieren</button>
                 </form>
-            </div>
+            </div>--}}
         </div>
     </div>
 </x-layout>

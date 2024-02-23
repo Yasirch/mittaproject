@@ -75,7 +75,7 @@
                         </div>
                         <h5 class="mt-2 mb-0">{{$restaurant->city}} {{$restaurant->postal_code}}</h5>
                         <a href="{{$restaurant->website_link ?? ''}}" target="_blank">Webseiten Link</a>
-                        <a href="{{$restaurant->gmap ?? ''}}" target="_blank">G-map Link</a>
+                        <a href="{{$restaurant->gmap ?? ''}}" target="_blank">Anfahrt</a>
 
                     </div>
 
@@ -156,7 +156,7 @@
                                                         <p><strong>Gericht:</strong>: {{ $menu->foodtitle }}</p>
                                                         <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
                                                         <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
+                                                        <p><strong>Lebensmittelzusatzstoff:</strong>
                                                             @foreach ($menu->foodadditives as $additive)
                                                                 {{ $additive }},
                                                             @endforeach
@@ -193,7 +193,7 @@
                                                         <p><strong>Gericht:</strong>: {{ $menu->foodtitle }}</p>
                                                         <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
                                                         <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
+                                                        <p><strong>Lebensmittelzusatzstoff:</strong>
                                                             @foreach ($menu->foodadditives as $additive)
                                                                 {{ $additive }},
                                                             @endforeach
@@ -230,7 +230,7 @@
                                                         <p><strong>Gericht:</strong>: {{ $menu->foodtitle }}</p>
                                                         <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
                                                         <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
+                                                        <p><strong>Lebensmittelzusatzstoff:</strong>
                                                             @foreach ($menu->foodadditives as $additive)
                                                                 {{ $additive }},
                                                             @endforeach
@@ -268,7 +268,7 @@
                                                         <p><strong>Gericht:</strong>: {{ $menu->foodtitle }}</p>
                                                         <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
                                                         <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
+                                                        <p><strong>Lebensmittelzusatzstoff:</strong>
                                                             @foreach ($menu->foodadditives as $additive)
                                                                 {{ $additive }},
                                                             @endforeach
@@ -306,7 +306,7 @@
                                                         <p><strong>Gericht:</strong>: {{ $menu->foodtitle }}</p>
                                                         <p><strong>Beschreibung:</strong> {{ $menu->fooddesc }}</p>
                                                         <p><strong>Preis:</strong> {{ $menu->price }}€</p>
-                                                        <p><strong>Food Additive:</strong>
+                                                        <p><strong>Lebensmittelzusatzstoff:</strong>
                                                             @foreach ($menu->foodadditives as $additive)
                                                                 {{ $additive }},
                                                             @endforeach

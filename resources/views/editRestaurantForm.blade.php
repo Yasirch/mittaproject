@@ -17,7 +17,7 @@
 
 
                     <div class="form-group">
-                        <label for="city">City:</label>
+                        <label for="Stadt">Stadt:</label>
                         <input type="text" id="city" name="city" value="{{  old('city', $restaurant->city ) }}">
                         @error('city')
                         <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="postal_code">Postal Code:</label>
+                        <label for="postal_code">Postleitzahl:</label>
                         <input type="text" id="postal_code" name="postal_code" value="{{ old('postal_code', $restaurant->postal_code) }}" >
                         @error('postal_code')
                         <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="website_link">G-map Link:</label>
+                        <label for="website_link">Anfahrt:</label>
                         <input type="text" id="website" name="gmap" value="{{  old('gmap', $restaurant->gmap) }}">
                         @error('website_link')
                         <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
@@ -58,8 +58,8 @@
                         @enderror
                     </div>
 
-                    <button type="submit" name="submit" class="btn btn-primary mr-2 margin-b-20">Save Changes</button>
-                    <a href="/restaurant/{{$restaurant->id}}"><button class="btn btn-primary margin-b-20">Cancel</button></a>
+                    <button type="submit" name="submit" class="btn btn-primary mr-2 margin-b-20">Änderungen speichern</button>
+                    <a href="/restaurant/{{$restaurant->id}}"><button class="btn btn-primary margin-b-20">Abbrechen</button></a>
 
 
                 </form>

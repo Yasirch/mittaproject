@@ -61,7 +61,7 @@
 
                     <!-- Allergens -->
                     <div class="form-group">
-                        <label class="mb-2">Allergens:</label>
+                        <label class="mb-2">Allergene:</label>
                         <div class="row m-0">
                             @foreach($allergens as $key => $allergen)
                             <div class="col-lg-4 col-md-6 col-sm-12 p-lg-0">

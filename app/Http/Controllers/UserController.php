@@ -15,6 +15,187 @@ class UserController extends Controller
         return $request->user();
     }
 
+    public function showUserProfile(User $user)
+    {
+        // Implement logic to show the user profile page
+        return view('user.edit', ['user' => $user]);
+    }
+
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // Create a new user
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        return redirect()->route('login')->with('success', 'User successfully added .');
+
+    }
+
+    public function updateUserProfile(Request $request, User $user)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:6|confirmed',
+        ]);
+
+        $data = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ];
+
+        // Only update password if provided in the form
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->input('password'));
+        }
+
+        $user->update($data);
+
+        return redirect()->route('login')->with('success', 'Profile updated successfully.');
+    }
+
+    public function editUserProfile(User $user)
+    {
+        // Implement logic to show the user editing page
+        return view('user.edit', ['user' => $user]);
+    }
+
+
+    public function destroy(User $user)
+    {
+        // Delete the user
+        $user->delete();
+
+        // Optionally, you can redirect or return a response
+        return redirect()->route('login')->with('success', 'User has been deleted.');
+    }
+
+    public function showUserRestaurants(User $user)
+    {
+        // Implement logic to retrieve the user's restaurants
+        $restaurants = $user->restaurants()->latest()->paginate(10); // Retrieve all associated restaurants
+        return view('user.restaurants', ['user' => $user, 'restaurants' => $restaurants]);
+    }
+
+    public function editUserRestaurant(User $user, Restaurant $restaurant)
+    {
+        return view('user.edit-restaurants', compact('user', 'restaurant'));
+    }
+
+    public function createUserRestaurant(User $user)
+    {
+        return view('user.create-restaurant', ['user' => $user]);
+    }
+
+    public function storeUserRestaurant(Request $request, User $user)
+    {
+        // Validate the form data
+        $incomingFields = $request->validate([
+            'name' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postal_code' => 'required|integer',
+            'website_link' => 'nullable|url',
+            'gmap' => 'nullable|url',
+            'logo' => 'nullable|file|mimes:jpeg,jpg,png|max:2048',
+        ]);
+
+        // Create a new restaurant instance
+        $restaurant = new Restaurant();
+
+        // Set the restaurant attributes
+        $restaurant->name = $request->input('name');
+        $restaurant->city = $request->input('city');
+        $restaurant->postal_code = $request->input('postal_code');
+        $restaurant->website_link = $request->input('website_link');
+        $restaurant->gmap = $request->input('gmap');
+
+        // Save the authenticated user's ID as the user_id for the restaurant
+        $restaurant->user_id = $user->id;
+
+        // Handle logo upload if provided
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos', 'public');
+
+            $restaurant->logo = $logoPath;
+        }
+
+        // Save the restaurant to the database
+        $user->restaurants()->save($restaurant);
+
+        $restaurantId = $restaurant->id;
+        return redirect()->route('user.restaurants', ['user' => $user->id])->with('success', 'Thank you! Your restaurant is successfully created.');
+    }
+
+    public function updateUserRestaurant(Request $request, User $user, Restaurant $restaurant)
+    { // Validate the form data
+        $incomingFields = $request->validate([
+            'name' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postal_code' => 'required|integer',
+            'website_link' => 'nullable|url',
+            'gmap' => 'nullable|url',
+            'logo' => 'nullable|file|mimes:jpeg,jpg,png|max:2048',
+        ]);
+
+
+
+        // Set the restaurant attributes
+        $restaurant->name = $request->input('name');
+        $restaurant->city = $request->input('city');
+        $restaurant->postal_code = $request->input('postal_code');
+        $restaurant->website_link = $request->input('website_link');
+        $restaurant->gmap = $request->input('gmap');
+
+        // Save the authenticated user's ID as the user_id for the restaurant
+        $restaurant->user_id = $user->id;
+
+        // Handle logo upload if provided
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos', 'public');
+
+            $restaurant->logo = $logoPath;
+        }
+
+        // Save the updated restaurant to the database
+        $restaurant->save();
+
+        return redirect()->route('user.restaurants', ['user' => $user->id])->with('success', 'Thank you! Your restaurant is successfully created.');
+    }
+
+    public function destroyUserRestaurant(User $user, Restaurant $restaurant)
+    {
+        // Add any necessary validation or authorization checks
+
+        $restaurant->delete();
+
+        return redirect()->route('user.restaurants', $user)->with('success', 'Restaurant deleted successfully.');
+    }
+
+    public function showUserRestaurantProfile(User $user, Restaurant $restaurant)
+    {
+        $menus = $restaurant->menus;
+        return view('user.show-restaurant-admin', ['restaurant' => $restaurant, 'menus' => $menus, 'user' => $user]);
+    }
+
+
+
+
+
     public function homepage()
     {
         $restaurants = Restaurant::all();
@@ -145,8 +326,9 @@ class UserController extends Controller
         $user = auth()->user();
         $username = $user->name;
         $restaurants = $user->restaurants()->latest()->paginate(10); // Retrieve all associated restaurants
-        $count = $user->restaurants()->count();
-        return view('logInHome', ['restaurants'=> $restaurants, 'count'=> $count, 'username'=> $username]);
+        $count = User::where('is_admin', false)->count();
+        $nonAdminUsers = User::where('is_admin', false)->latest()->paginate(10);
+        return view('logInHome', ['restaurants'=> $restaurants, 'count'=> $count, 'username'=> $username,'nonAdminUsers'=>$nonAdminUsers]);
 
     }
     else{

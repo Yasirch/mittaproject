@@ -16,7 +16,7 @@
 
 
                 <div class="form-group">
-                    <label for="city">City:</label>
+                    <label for="city">Stadt:</label>
                     <input type="text" id="city" name="city" value="{{ $restaurant->city ?? old('city') }}">
                     @error('city')
                     <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="postal_code">Postal Code:</label>
+                    <label for="postal_code">Postleitzahl:</label>
                     <input type="number" class="custom-input" id="postal_code" name="postal_code" value="{{ $restaurant->postal_code ?? old('postal_code') }}" >
                     @error('postal_code')
                     <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gmap">G-map Link:</label>
+                    <label for="gmap">Anfahrt:</label>
                     <input type="text" id="gmap" name="gmap" value="{{ $restaurant->gmap ?? old('gmap') }}">
                     @error('gmap')
                     <p class="m-0 small alert alert-danger shadow-sm">{{$message}}</p>
