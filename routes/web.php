@@ -20,8 +20,7 @@ use App\Http\Controllers\MenuController;
 
 Route::get('/', [UserController::class, "homepage"]);
 Route::post('/loginuser', [UserController::class, "loginuser"]);
-Route::post('/register', [UserController::class, "register"])->middleware('guest');
-Route::get('/login', [UserController::class, "showCorrectHomepage"])->name('login');
+
 Route::get('/admin', [UserController::class, "admin"])->name('user.admin');
 Route::post('/admin/store', [UserController::class, 'adminStore'])->name('admin.store');
 
@@ -65,3 +64,5 @@ Route::get('/user/{user}/restaurants/{restaurant}/edit', [UserController::class,
 Route::put('/user/{user}/restaurants/{restaurant}', [UserController::class, 'updateUserRestaurant'])->name('user.restaurants.update');
 
 
+Route::post('/register', [UserController::class, "register"])->middleware('guest');
+Route::get('/login', [UserController::class, "showCorrectHomepage"])->name('login');
