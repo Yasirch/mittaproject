@@ -180,7 +180,7 @@ return [
     | the HTTP protocol. You are free to modify this option if needed.
     |
     */
-
+    'same_site' => 'lax',
     'http_only' => true,
 
     /*
